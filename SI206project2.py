@@ -28,8 +28,9 @@ from bs4 import BeautifulSoup
 ## find_urls("the internet is awesome #worldwideweb") should return [], empty list
 
 def find_urls(s):
-    pass
-    #Your code here
+   
+    
+    http[s]*:\/\/\S\S\S\S\S\S\S\S\S\S\S\S\S\S
 
 
 
