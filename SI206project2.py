@@ -29,9 +29,18 @@ from bs4 import BeautifulSoup
 
 def find_urls(s):
    
-    
+
+    # http://www.google.com
     http[s]*:\/\/\S\S\S\S\S\S\S\S\S\S\S\S\S\S
 
+    #http://www.esty.com
+    http[s]*:\/\/\S\S\S\S\S\S\S\S
+
+    #http://instagram.com
+    http[s]*:\/\/\S\S\S\S\S\S\S\S\S\S\S\S\S
+
+    #https://www.bbc.co.uk 
+    http[s]*:\/\/\S\S\S.\S\S\S.\S\S.\S\S
 
 
 ## PART 2  - Define a function grab_headlines.
