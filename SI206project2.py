@@ -3,6 +3,7 @@
 ## COMMENT HERE WITH:
 ## Your name: Kayla Williams 
 ## Anyone you worked with on this project: Amanda Gomez 
+## Github Link: https://github.com/kaylawi/Project2
 
 ## Below we have provided import statements, comments to separate out the 
 #parts of the project, instructions/hints/examples, and at the end, TESTS.
@@ -29,9 +30,9 @@ from bs4 import BeautifulSoup
 
 def find_urls(s):
 
+#regular expressions of the websites 
 
-    #https://www.bbc.co.uk 
-    reg = r'http[s]*:\/\/\S+\.\S\S+'
+    reg = r'http[s]*:\/\/\S+\.\S\S+' 
 
     regex1 = re.findall(reg, s)
 
@@ -48,15 +49,15 @@ def grab_headlines(): #Refer to Newyork times example
 
 
     
-    base_url = 'http://www.michigandaily.com/section/opinion'
-    r = requests.get(base_url)
+    base_url = 'http://www.michigandaily.com/section/opinion' 
+    r = requests.get(base_url) #text format of michigan daily 
     soup = BeautifulSoup(r.text, "lxml")
 
     print("Michigan Daily Headlines:")
 
     numoflists = list()
 
-    for most_read in soup.find_all(class_="pane-mostread"):
+    for most_read in soup.find_all(class_="pane-mostread"): #shows the most read section of michigan daily 
         for item_most_read in most_read.find_all('a'):
             numoflists.append(item_most_read.text)
 
@@ -76,7 +77,7 @@ def grab_headlines(): #Refer to Newyork times example
 ## requests.get(base_url, headers={'User-Agent': 'SI_CLASS'}) 
 
 def get_umsi_data():
-    base_url = 'https://www.si.umich.edu/directory?field_person_firstname_value=&field_person_lastna me_value=&rid=All&page'
+    base_url = 'https://www.si.umich.edu/directory?field_person_firstname_value=&field_person_lastna me_value=&rid=All&page' #collects data from first page
     r = requests.get(base_url, headers={'User-Agent': 'SI_CLASS'}) 
     soup = BeautifulSoup(r.text, "html.parser") 
 
@@ -88,16 +89,16 @@ def get_umsi_data():
     directory = {}
 
     for x in range(13):
-        newurl = base_url+'='+str(x)
-        r = requests.get(newurl, headers={'User-Agent': 'SI_CLASS'}) 
+        newurl = base_url+'='+str(x) # collects all of the data from page 0 through page 13 
+        r = requests.get(newurl, headers={'User-Agent': 'SI_CLASS'}) #create text format of the data
         soup = BeautifulSoup(r.text, "html.parser")
 
 
         for names_and_titles in soup.find_all(class_="views-row"):
-            name = names_and_titles.find_all(class_= "field-name-title")[0].text
-            title = names_and_titles.find_all(class_= "field field-name-field-person-titles field-type-text field-label-hidden")[0].text
+            name = names_and_titles.find_all(class_= "field-name-title")[0].text # collects all of the names from directory 
+            title = names_and_titles.find_all(class_= "field field-name-field-person-titles field-type-text field-label-hidden")[0].text # collects all of the titles from directory
             
-            directory[name] = title
+            directory[name] = title 
 
     return directory 
    
@@ -112,7 +113,7 @@ def num_students(data):
     for title in data.values():
         if title == 'PhD student':
 
-            num_ofPhD_students += 1
+            num_ofPhD_students += 1 #keep track of how many phD students there are
 
     return num_ofPhD_students
 
